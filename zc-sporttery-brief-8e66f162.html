@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足球竞猜 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2c3e50;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 导航 */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #dce1e6;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.3px;
+      background: #ffffffd9;
+      padding: 0.3rem 1rem;
+      border-radius: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3d5a73;
+      font-weight: 450;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #7f9e7a;
+      color: #1f3b2c;
+    }
+
+    .nav-links .cta-nav {
+      background: #e9edef;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #c8d2d8;
+    }
+
+    /* hero 区域 */
+    .hero {
+      text-align: center;
+      padding: 2rem 0.5rem 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: #1b2f26;
+    }
+
+    .hero .sub {
+      margin-top: 0.7rem;
+      color: #4e5e56;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.05rem;
+    }
+
+    .hero .sub a {
+      color: #2b5f47;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 450;
+    }
+
+    .hero .sub a:hover {
+      background: #e0e9e2;
+      padding: 0 0.1rem;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #e2e9ee;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #1d362a;
+      letter-spacing: -0.2px;
+    }
+
+    .desc-text {
+      color: #3b4d44;
+      font-size: 0.98rem;
+    }
+
+    .desc-text + .desc-text {
+      margin-top: 0.9rem;
+    }
+
+    /* 场景模块 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 2rem;
+      border: 1px solid #dee6ec;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1e3e2d;
+      border-left: 4px solid #9db8a4;
+      padding-left: 0.65rem;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #3d5247;
+      line-height: 1.65;
+    }
+
+    /* 常见说明区块 */
+    .faq-section {
+      margin: 2.8rem 0 1rem;
+    }
+
+    .faq-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid #e3eaef;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1f3f30;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-a {
+      color: #495e54;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .faq-a a {
+      color: #2a5c46;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 450;
+    }
+
+    .faq-a a:hover {
+      background: #d9e5dd;
+    }
+
+    /* 提示条 */
+    .reminder {
+      background: #ecf1ee;
+      border: 1px solid #c7d6cf;
+      border-radius: 40px;
+      padding: 1rem 2rem;
+      margin: 2.2rem 0 1.8rem;
+      text-align: center;
+      font-size: 0.93rem;
+      color: #2b4b3b;
+    }
+
+    .reminder strong {
+      font-weight: 550;
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #d8e2e8;
+      font-size: 0.85rem;
+      color: #63776b;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+    }
+
+    .footer-note a {
+      color: #3e6552;
+      text-decoration: none;
+      border-bottom: 1px dotted #aebfb4;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .scenes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      body {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.8rem 1.2rem;
+      }
+      .card {
+        padding: 1.3rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 导航 -->
+  <div class="nav">
+    <div class="nav-logo">⚡ 简明指南</div>
+    <div class="nav-links">
+      <a href="#intro">介绍</a>
+      <a href="#scenes">场景</a>
+      <a href="#faq">说明</a>
+      <a href="#remind">提醒</a>
+      <a href="https://zc-sporttery.com" class="cta-nav">足球竞猜</a>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>足球竞猜 · 从了解开始</h1>
+    <div class="sub">
+      不论你是刚开始接触，还是希望更清晰地理解规则与访问方式，这里整理了一份轻量的叙述式指引。
+      核心入口始终指向 <a href="https://zc-sporttery.com">足球竞猜</a>，这也是当前信息最集中的地方。
+    </div>
+  </div>
+
+  <!-- 核心介绍卡片 -->
+  <div class="card" id="intro" style="margin-bottom: 2rem;">
+    <div class="section-title">一点背景与习惯</div>
+    <div class="desc-text">
+      足球竞猜围绕赛事结果展开，参与者对比赛走向做出自己的判断。和许多活动一样，它更看重对球队、联赛、竞技状态的基础了解，而非依赖偶然。
+      平台本身以中文内容为主，界面结构偏向直观，适合慢慢浏览。近年一些调整让信息呈现更集中，比如赛程、选项说明都整合在同一个页面框架下。
+    </div>
+    <div class="desc-text">
+      如果你是第一次访问，不妨花几分钟熟悉页面的分区：左侧通常列出对阵，右侧对应不同选项。不必急于做出选择，先看清楚规则和说明再决定。
+      很多人习惯在赛前查阅数据，但最好把目光放回官方页面本身——那里有最准确的表述。
+    </div>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div id="scenes" style="margin-bottom: 0.5rem;">
+    <div style="font-size: 1.2rem; font-weight: 450; color: #1f3e2e; margin-bottom: 1rem;">三个常见使用场景</div>
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <h3>赛前快速查看</h3>
+        <p>周末联赛密集，你可以在几分钟内浏览对阵，了解选项差异。页面刷新及时，多数情况下截止时间前都能确认最新状态。</p>
+      </div>
+      <div class="scene-card">
+        <h3>多场对比与思考</h3>
+        <p>同时关注四五场比赛时，利用浏览器的分屏或标签页对照不同场次。注意每场的选项说明独立，避免混淆。</p>
+      </div>
+      <div class="scene-card">
+        <h3>查看往期与模式</h3>
+        <p>部分历史结果可以帮助你理解常见选项的分布，但每一场都是独立的。平台提供近期记录，适合安静地回顾几轮。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 常见说明 -->
+  <div class="faq-section card" id="faq">
+    <div class="section-title">常见说明摘要</div>
+
+    <div class="faq-item">
+      <div class="faq-q">页面上的数字和选项怎么看？</div>
+      <div class="faq-a">每一项都对应一个具体赛果预期，旁边会显示对应的参考数值。数值只是反映当前分布情况，不代表最终结果。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">为什么有时找不到某场比赛？</div>
+      <div class="faq-a">可能是该场次暂未纳入当前竞猜选项，或临近截止已关闭。建议以 <a href="https://zc-sporttery.com">足球竞猜</a> 即时列表为准。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">关于访问与账号</div>
+      <div class="faq-a">访问直接通过域名即可，无需额外工具。平台有标准的注册流程，使用前请确认你已了解当地相关法规。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">信息有没有更简洁的入口？</div>
+      <div class="faq-a">目前最直接的方式就是打开 <a href="https://zc-sporttery.com">足球竞猜</a> 主页，大部分内容都聚合在那里。少数帮助说明可在页脚找到。</div>
+    </div>
+  </div>
+
+  <!-- 提醒条 -->
+  <div class="reminder" id="remind">
+    <strong>📌 访问提醒</strong> — 每次参与前留意截止时间与选项变更。保持冷静，把足球竞猜当作一种对赛事的观察方式，而不是其他。
+  </div>
+
+  <!-- 一段自然叙述 -->
+  <div class="card" style="margin-top: 0.2rem;">
+    <div class="desc-text">
+      写这份页面时，我尽量让它读起来像一份安静的备忘录。从导航到卡片再到问答，每部分都尽可能保持克制，不渲染、不催促。
+      如果你在寻找一个可以直接使用的起点，地址栏里输入 <a href="https://zc-sporttery.com">足球竞猜</a> 就可以了。
+      剩下的无非是花一点时间，看看页面长什么样，选项怎么列，然后按照自己的节奏去判断。
+    </div>
+    <div class="desc-text" style="margin-top: 0.8rem;">
+      未来这个平台可能会调整布局或增加新的模块，但基本的逻辑——让参与者基于公开信息做出选择——不会变。
+      保持关注，但不必紧绷。每轮比赛结束，页面会更新结果，你可以对照自己之前的判断，仅此而已。
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer-note">
+    <span>内容仅为一般性介绍 · 不构成任何建议</span>
+    <a href="https://zc-sporttery.com">足球竞猜</a>
+    <span>© 2025 · 简明指南</span>
+  </div>
+
+</div>
+</body>
+</html>
